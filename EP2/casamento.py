@@ -15,19 +15,45 @@ def makeDict():
 	return dic
 
 def ordenateDict(dic):
+	#newd = dic
 	newd = dict(sorted(dic.items(), key = lambda item : len(item[1])))
 	return newd
 
 def generateCombinations(dic):
-	for names in dic.keys:
-		
-print(ordenateDict(makeDict()))
-			
+	newDic = {}
+	newList = []
+	for key,value in dic.items():
+		for v in value:
+			if v not in newList:
+				temp = v
+				break
+			temp = ''
+			continue
+		newList.append(temp)
+		newDic[key] = temp
+	print(newList)
+	return newDic
+'''def generateCombinations(dic):
+	newDic = {}
+	newList = []
+	for key,value in dic.items():
+		for v in value:
+			if v not in newDic:
+				try:
+					newDic[key].append(value)
+				except KeyError:
+					newDic[key] = [v]
+				#newList.append(v)
+				break
+			continue
+	return newDic'''
 
 
 
 
 
+
+print(generateCombinations(ordenateDict(makeDict())))
 #	for names in dic.values():
 #		for name in names:
 #			print(name)
