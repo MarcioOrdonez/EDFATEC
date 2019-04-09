@@ -1,4 +1,4 @@
 
 class config:
 	casamentoFile = 'casamento.txt'
-	mesaFile = 'teste.txt'
+	mesaFile = 'teste1.txt'

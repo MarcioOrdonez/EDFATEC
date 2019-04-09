@@ -11,5 +11,6 @@ def main():
 	 	print('Casamento Possível:', casamentoPossivel)
 	else:
 	 	print('Casamento impossível')
+	mesa.makeDict()
 
 main()
