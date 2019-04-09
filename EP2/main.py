@@ -1,4 +1,5 @@
 import casamento
+import mesa
 def main():
 	casamentoPossivel = casamento.generateCombinations()
 	flag = True
