@@ -19,17 +19,17 @@ def ordenateDict(dic):
 	newd = dict(sorted(dic.items(), key = lambda item : len(item[1])))
 	return newd
 
-def generateCombinations():
-	dic = ordenateDict(makeDict())
-	newDic = {}
-	newList = []
-	for key,value in dic.items():
-		for v in value:
-			if v not in newList:
-				temp = v
+def generateCombinations(dic):
+	#dic = ordenateDict(makeDict())
+	casal = {}
+	homem_casado = []
+	for mulher, homem_lista in dic.items():
+		for homem in homem_lista:
+			if homem not in homem_casado:
+				pretendente = homem
 				break
-			temp = ''
+			pretendente = ''
 			continue
-		newList.append(temp)
-		newDic[key] = temp
-	return newDic
+		homem_casado.append(pretendente)
+		casal[mulher] = pretendente
+	return casal
