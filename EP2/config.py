@@ -1,4 +1,6 @@
 
 class config:
-	casamentoFile = 'casamento.txt'
-	mesaFile = 'teste1.txt'
+	casamentoFile = 'casamento no.txt'
+	mesaFile = 'cavaleiros no.txt'
+	#casamentoFile = 'casamento.txt'
+	#mesaFile = 'cavaleiros.txt'

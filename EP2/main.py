@@ -4,15 +4,23 @@ def main():
 	pretendentes = casamento.makeDict()
 	pretendentes = casamento.ordenateDict(pretendentes)
 	casamentoPossivel = casamento.generateCombinations(pretendentes)
+	cavaleiros = mesa.makeDict()
+	cavaleiros = mesa.ordenateDict(cavaleiros)
+	cavaleiros = mesa.generateCombinations(cavaleiros)
 	flag = True
+	solteiras = []
 	for (key, value) in casamentoPossivel.items():
 		if value == '':
-	 		flag = False
-	 		break
+			solteiras.append(key)
+			flag = False
+			break
 	if flag:
 	 	print('Casamento Possível:', casamentoPossivel)
 	else:
-	 	print('Casamento impossível')
-	mesa.makeDict()
+	 	print('Casamento impossível, solteiras: ', solteiras)
+	if cavaleiros:
+	 	print('Mesa ',cavaleiros)
+	else:
+	 	print('Não é possivel arrumar mesa')
 
 main()
