@@ -15,7 +15,7 @@ def main():
 			flag = False
 			break
 	if flag:
-	 	print('Casamento Possível:', casamentoPossivel)
+		print('Casamento possível: ', casamentoPossivel)
 	else:
 	 	print('Casamento impossível, solteiras: ', solteiras)
 	if cavaleiros:

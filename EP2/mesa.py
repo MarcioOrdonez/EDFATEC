@@ -1,8 +1,5 @@
 import config
 
-
-'''Tenho que comparar a Lista do value do dicionario com as keys que estao envolta
-Tenho que transformar as keys em uma tuple'''
 def makeDict():
 	dic = {}
 	with open(config.config.mesaFile,'r') as file:
