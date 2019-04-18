@@ -21,19 +21,19 @@ def ordenateDict(dic):
 	return newd
 
 def generateCombinations(dic):
-	lista = []
+	mesa = []
 	for i in range(len(dic.keys())):
-		for key, values in dic.items():	
-			if lista == []:
-				lista.append(key)
+		for cavaleiros, amigos in dic.items():	
+			if mesa == []:
+				mesa.append(cavaleiros)
 				break
-			if key in lista:
+			if cavaleiros in mesa:
 				continue
-			if lista[-1] in values:
-				lista.append(key)
+			if mesa[-1] in amigos:
+				mesa.append(cavaleiros)
 				break
-	if len(lista) == len(dic.keys()):
-		return lista
+	if len(mesa) == len(dic.keys()):
+		return mesa
 	else:
 		return False
 

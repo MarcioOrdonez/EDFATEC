@@ -22,22 +22,24 @@ for palavra in range(len(linha)):
 for x in range(1,len(objeto)//2):
     lista[x] = []
     for i in range(len(objeto)):
-        if lista[x] == []:
-                lista[x].append(objeto.pop(i))
-                check.append(objeto.pop(i))
         if lista[x] != []:
-            for atual in lista[x]:
-                for xy in range(len(objeto)):
-                    if objeto[xy] not in check:
-                    #if objeto[xy] not in check:
-                        if (atual[0] == objeto[xy][0]+1 or atual[0] == objeto[xy][0]-1) and atual[1] == objeto[xy][1]:
-                            lista[x].append(objeto[xy])
-                            check.append(objeto[xy])
-                            xy=0
-                        if atual[0] == objeto[xy][0] and (atual[1] == objeto[xy][1]-1 or atual[1] == objeto[xy][1]+1):
-                            lista[x].append(objeto[xy])
-                            check.append(objeto[xy])
-                            xy=0
+            for atual in lista[x][-1]
+        for xy in range(len(objeto)):
+            if objeto[xy] not in check:
+                if lista[x] == []:
+                    lista[x].append(objeto[xy])
+                    check.append(objeto[xy])
+                    atual = lista[x][-1]
+                    break
+            #if objeto[xy] not in check:
+                if atual[0] == objeto[xy][0] and (atual[1] == objeto[xy][1]-1 or atual[1] == objeto[xy][1]+1):
+                    lista[x].append(objeto[xy])
+                    check.append(objeto[xy])
+                    xy=0
+                if (atual[0] == objeto[xy][0]+1 or atual[0] == objeto[xy][0]-1) and atual[1] == objeto[xy][1]:
+                    lista[x].append(objeto[xy])
+                    check.append(objeto[xy])
+                    xy=0
 
 
 
