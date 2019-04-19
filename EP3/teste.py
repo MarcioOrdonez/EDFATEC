@@ -13,7 +13,7 @@ objeto = []
 lista = {}
 duplas = []
 atual = []
-cont = 1
+cont = 0
 xy = 0
 for palavra in range(len(linha)):
     for letra in range(len(linha[palavra])):
@@ -26,7 +26,8 @@ for x in range(1,len(objeto)//2):
                 lista[x].append(objeto.pop(i))
                 cont+=1
         if lista[x] != []:
-            while(i < cont):
+            i = 0
+            while(i < 16):
             #for atual in lista[x]:
                 if objeto != []:
                     tam = len(objeto)
@@ -34,10 +35,12 @@ for x in range(1,len(objeto)//2):
                     while(xy > tam):
                         if (lista[x][i][0] == objeto[xy][0]+1 or lista[x][i][0] == objeto[xy][0]-1) and lista[x][i][1] == objeto[xy][1]\
                             or lista[x][i][0] == objeto[xy][0] and (lista[x][i][1] == objeto[xy][1]-1 or lista[x][i][1] == objeto[xy][1]+1):
-                            lista[x].append(objeto.pop(xy))
+                            lista[x].append(objeto[xy])
+                            objeto.pop(xy)
+
                             cont+=1
                             xy=0
-                            break
+                            continue
                         xy+=1
                         
                 i+=1
