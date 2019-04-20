@@ -9,45 +9,61 @@ imagem = '''0011001010
 0010001110'''
 linha = imagem.split('\n')
 
-objeto = []
-lista = {}
-duplas = []
-check = []
-atual = []
-for palavra in range(len(linha)):
-    for letra in range(len(linha[palavra])):
-        if linha[palavra][letra] == '1':
-            objeto.append([palavra,letra])
-for x in range(1,len(objeto)//2):
-    lista[x] = []
-    for i in range(len(objeto)):
-        if lista[x] != []:
-            atual = lista[x][-1]
-        for xy in range(len(objeto)):
-            if objeto[xy] not in check:
-                if lista[x] == []:
-                    lista[x].append(objeto[xy])
-                    check.append(objeto[xy])
-                    atual = lista[x][-1]
+def listGenerate(linha):
+    grupo, grupos = [], []
+    for palavra in range(len(linha)-1):
+        for letra in range(len(linha[palavra])-1):
+            if linha[palavra][letra] == '1':
+                grupo.append([palavra,letra])
+                if linha[palavra][letra+1] == '1':
+                    grupo.append([palavra,letra+1])
+                if linha[palavra+1][letra] == '1':
+                    grupo.append([palavra+1,letra])
+                grupos.append(grupo)
+                grupo = []
+    return grupos
+
+def merge(grupos):
+    for p in grupos:
+        for i in range(len(grupos)):
+            flag = False
+            for j in range(len(grupos[i])):
+                for m in range(len(grupos)):
+                    if grupos[i] != grupos[m]:
+                        if grupos[i][j] in grupos[m]:
+                            for elementos in grupos[m]:
+                                grupos[i].append(elementos)
+                            grupos[m] = []
+                            flag = True
+            if flag:
+                break
+    return grupos
+
+def removeDuplicated(grupos):
+    mapa = []
+    for j in range(len(grupos)):
+        if grupos[j] != []:
+            grupos[j].sort()
+            temp = [ grupos[j][i] for i in range(len( grupos[j])) if i == 0 or  grupos[j][i] !=  grupos[j][i-1]]
+            mapa.append(temp)
+    return mapa
+def newPrint(linha,mapa):
+    for i in range(len(linha)):
+        for j in range(len(linha[i])):
+            flag = False
+            for x in range(len(mapa)):
+                if [i,j] in mapa[x]:
+                    print(x+1,end='')
+                    flag = True
                     break
-                if (atual[0] == objeto[xy][0]+1 or atual[0] == objeto[xy][0]-1) and atual[1] == objeto[xy][1] or \
-                    atual[0] == objeto[xy][0] and (atual[1] == objeto[xy][1]-1 or atual[1] == objeto[xy][1]+1):
-                    lista[x].append(objeto[xy])
-                    check.append(objeto[xy])
-                    xy=0
+            if flag == False:
+                print(linha[i][j],end='')
+        print('\n',end='')
 
+def main(linha):
+    grupos = listGenerate(linha)
+    gruposOrdenados = merge(grupos)
+    gruposOrdenados = removeDuplicated(gruposOrdenados)
+    newPrint(linha,gruposOrdenados)
 
-print(lista)
-
-
-'''for x in range(1,len(objeto)//2):
-    lista[x] = []
-    for xy in range(len(objeto)):
-        if lista[x] == []:
-            lista[x] = objeto[xy]
-            continue
-        if lista[x][0] == objeto[xy][0] and lista[x][1] == objeto[xy][1]-1 or\
-             lista[x][0] == objeto[xy][0]-1 and lista[x][1] == objeto[xy][1]:
-             if objeto[xy] not in lista[x]:
-                lista[x].append(objeto[xy])
-'''
+main(linha)

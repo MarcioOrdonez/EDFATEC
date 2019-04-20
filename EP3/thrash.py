@@ -25,26 +25,26 @@ for palavra in range(len(linha)-1):
                 grupo.append([palavra+1,letra])
             grupos.append(grupo)
             grupo = []
-for i in range(len(grupos)):
-    for j in range(len(grupos[i])):
-        for m in range(len(grupos)):
-            if grupos[i] != grupos[m]:
-                if grupos[i][j] in grupos[m]:
-                    for elementos in grupos[m]:
-                        grupos[i].append(elementos)
-                    #grupos[i] = [elementos for elementos in grupos[m]]
-                    grupos[m] = []
+for p in grupos:
+    for i in range(len(grupos)):
+        flag = False
+        for j in range(len(grupos[i])):
+            for m in range(len(grupos)):
+                if grupos[i] != grupos[m]:
+                    if grupos[i][j] in grupos[m]:
+                        for elementos in grupos[m]:
+                            grupos[i].append(elementos)
+                        grupos[m] = []
+                        flag = True
+        if flag:
+            break
+
 for j in range(len(grupos)):
     if grupos[j] != []:
         grupos[j].sort()
         temp = [ grupos[j][i] for i in range(len( grupos[j])) if i == 0 or  grupos[j][i] !=  grupos[j][i-1]]
         mapa.append(temp)
-# for fragmentos in mapa:
-#     cont+=1
-#     for xy in fragmentos:
-#         for palavra in range(len(linha)):
-#             for letra in range(len(linha[palavra])):
-#                 if palavra == xy[0] and letra == xy[1]:
+#mapa = [[[0, 2], [0, 3], [1, 1], [1, 2], [2, 2], [2, 3]], [[0, 6], [0, 8], [1, 6], [1, 8], [2, 6], [2, 7], [2, 8]],[[4, 2], [5, 2], [6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [7, 2], [8, 2]], [[4, 6], [5, 5], [5, 6], [5, 7], [4, 8], [5, 7], [5, 8], [5, 9]], [[7, 6], [7, 7], [7, 8], [8, 6], [8, 7], [8, 8]]]
 for i in range(len(linha)):
     for j in range(len(linha[i])):
         flag = False
@@ -60,18 +60,30 @@ for i in range(len(linha)):
 
 #print(mapa)
 #print(linha)
+[[[0, 2], [0, 3], [1, 2]], [[0, 3]], [[0, 6], [1, 6]]
+, [[0, 8], [1, 8]], [[1, 1], [1, 2]], [[1, 2], [2, 2]]
+, [[1, 6], [2, 6]], [[1, 8], [2, 8]], [[2, 2], [2, 3]]
+, [[2, 3]], [[2, 6], [2, 7]], [[2, 7], [2, 8]], [[2, 8]]
+, [[4, 2], [5, 2]], [[4, 6], [5, 6]], [[4, 8], [5, 8]]
+, [[5, 2], [6, 2]], [[5, 5], [5, 6]], [[5, 6], [5, 7]]
+, [[5, 7], [5, 8]], [[5, 8], [5, 9]], [[6, 0], [6, 1]]
+, [[6, 1], [6, 2]], [[6, 2], [6, 3], [7, 2]], [[6, 3]
+, [6, 4]], [[6, 4]], [[7, 2], [8, 2]], [[7, 6], [7, 7]
+, [8, 6]], [[7, 7], [7, 8], [8, 7]], [[7, 8], [8, 8]]]
+
+
+
 
 '''
-[[[2, 2], [2, 3], [0, 2], [0, 3], [1, 2], [0, 3], [1, 1],
- [1, 2], [1, 2], [2, 2], [2, 3]], [[2, 8], [0, 8], [1, 8],
-  [1, 8], [2, 8], [2, 6], [2, 7], [0, 6], [1, 6], [1, 6],
-   [2, 6], [2, 7], [2, 8]], [], [[4, 6], [5, 6], [5, 5],
-    [5, 6], [5, 6], [5, 7]], [[4, 8], [5, 8], [5, 7],
-     [5, 8], [5, 8], [5, 9]], [[6, 4], [6, 2], [6, 3], 
-     [7, 2], [4, 2], [5, 2], [5, 2], [6, 2], [6, 0], 
-     [6, 1], [6, 1], [6, 2], [6, 3], [6, 4], [7, 2], 
-     [8, 2]], [[7, 8], [8, 8], [7, 6], [7, 7], 
-     [8, 6], [7, 7], [7, 8], [8, 7]]]
+[[[0, 2], [0, 3], [1, 1], [1, 2], [2, 2]
+, [2, 3]], [[0, 6], [0, 8], [1, 6], [1, 8]
+, [2, 6], [2, 7], [2, 8]], [[4, 6], [5, 5]
+, [5, 6], [5, 7], [4, 8], [5, 7], [5, 8]
+, [5, 9]], [[4, 2], [5, 2], [6, 0], [6, 1]
+, [6, 2], [6, 3], [6, 4], [7, 2], [8, 2]]
+, [[7, 6], [7, 7], [7, 8], [8, 6], [8, 7]
+, [8, 8]]]
+
 
 '''
 
