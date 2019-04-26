@@ -6,7 +6,9 @@ imagem = '''0011001010
 0010011111
 1111100000
 0010001110
-0010001110'''
+0010001110
+0000000000
+1111111111'''
 linha = imagem.split('\n')
 
 def listGenerate(linha):
@@ -24,7 +26,6 @@ def listGenerate(linha):
                     grupo = []
                 except IndexError:
                     break
-    print(grupos) 
     return grupos
 
 def merge(grupos):
