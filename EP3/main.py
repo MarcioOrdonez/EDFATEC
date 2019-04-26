@@ -11,16 +11,20 @@ linha = imagem.split('\n')
 
 def listGenerate(linha):
     grupo, grupos = [], []
-    for palavra in range(len(linha)-1):
-        for letra in range(len(linha[palavra])-1):
+    for palavra in range(len(linha)):
+        for letra in range(len(linha[palavra])):
             if linha[palavra][letra] == '1':
                 grupo.append([palavra,letra])
-                if linha[palavra][letra+1] == '1':
-                    grupo.append([palavra,letra+1])
-                if linha[palavra+1][letra] == '1':
-                    grupo.append([palavra+1,letra])
-                grupos.append(grupo)
-                grupo = []
+                try:
+                    if linha[palavra][letra-1] == '1':
+                        grupo.append([palavra,letra-1])
+                    if linha[palavra-1][letra] == '1':
+                        grupo.append([palavra-1,letra])
+                    grupos.append(grupo)
+                    grupo = []
+                except IndexError:
+                    break
+    print(grupos) 
     return grupos
 
 def merge(grupos):
